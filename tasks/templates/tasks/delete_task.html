@@ -1,0 +1,10 @@
+<h3>Are you sure want to delete the task "{{task}}"?</h3>
+
+<a href="{% url 'todoList' %}">Cancel</a>
+
+<form method="post" action=""> {% csrf_token%}
+
+    {{form}}
+    <input class="btn btn-warning" type="submit" name="Delete Task">
+
+</form>
