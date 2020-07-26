@@ -2,9 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 # Create your views here.
 from .models import Task
-from .forms import TaskForm
+from .forms import TaskForm, CreateUserForm
 from .decorators import unauthenticated_user, allowed_users, admin_only
-
 
 
 def mainPage(request):
@@ -19,7 +18,6 @@ def mainPage(request):
     context = {'tasks': tasks[::-1], 'form':form}
 
     return render(request, 'tasks/todoList.html', context)
-
 
 def updateTask(request, pk):
     task = Task.objects.get(id=pk)
@@ -39,7 +37,6 @@ def updateTask(request, pk):
 def deleteTask(request,pk):
     task = Task.objects.get(id=pk)
     
-    
     if request.method == 'POST':
         task.delete()
         return redirect('/')
@@ -49,7 +46,6 @@ def deleteTask(request,pk):
     return render(request, 'tasks/delete_task.html', context)
 
 
-@unauthenticated_user
 def loginPage(request):
 	if request.method == 'POST':
 		username = request.POST.get('username')
@@ -62,13 +58,12 @@ def loginPage(request):
 			messages.info(request, 'Username or password incorrect!')
 
 	context = {}
-	return render(request, 'Accounts/login.html', context)
+	return render(request, 'tasks/login.html', context)
 
 def logoutUser(request):
 	logout(request)
 	return redirect('login')
 
-@unauthenticated_user
 def register(request):
 	form = CreateUserForm()
 	if request.method == 'POST':
@@ -79,4 +74,4 @@ def register(request):
 			messages.success(request, 'You successfuly created an account for' + user)
 			return redirect('login')
 	context = {'form':form}
-	return render(request, 'Accounts/register.html', context)
+	return render(request, 'tasks/register.html', context)
