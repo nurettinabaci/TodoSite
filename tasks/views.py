@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-
+from django.utils import timezone
 # Create your views here.
-from .models import Task
+from .models import *
 from .forms import TaskForm, CreateUserForm
 from .decorators import unauthenticated_user, authenticated_user
 
@@ -15,11 +15,12 @@ def mainPage(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
+            form.instance.user = request.user.enduser
             form.save()
-        return redirect('/')
+            return redirect('/')
+
 
     context = {'tasks': tasks[::-1], 'form':form}
-
     return render(request, 'tasks/todoList.html', context)
 
 

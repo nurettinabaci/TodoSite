@@ -9,7 +9,7 @@ class TaskForm(ModelForm):
     title = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Add a task' , 'size': '5'}))
     class Meta:
         model = Task
-        fields = "__all__"
+        fields =  ['title']
 
 class CreateUserForm(UserCreationForm):
 	class Meta:

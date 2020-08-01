@@ -27,6 +27,6 @@ class Task(models.Model):
 	date_created= DateField(auto_now = True)
 	#due_date= DateField(default = timezone.now()+ timezone.timedelta(days=1), null=True) # tomorrow
     #isImportant = BooleanField(default=False) # star amblem at right1
-	tags = models.ManyToManyField(Tag, null = True, blank = True)
+	tags = models.ManyToManyField(Tag, blank = True)
 	def __str__(self):
 		return self.title
