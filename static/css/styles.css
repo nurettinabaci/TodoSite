@@ -1,0 +1,147 @@
+body {
+    background-color: #638CB8;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+    input::placeholder {
+        color: #d3d3d3;
+    }
+
+
+.submit {
+    background-color: #6BA3E8;
+}
+
+
+.item-row {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #906abd;
+  box-shadow: 0px -1px 10px -4px rgba(0,0,0, 0.75);
+}
+
+.btn.btn-sm.btn-danger {
+  background-color: indianred;
+  border-color: #e59400;
+}
+
+.item-row {
+    background-color: #906abd;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 16px;
+    box-shadow: 0px -1px 10px -4px rgba(0, 0, 0, 0.75);
+}
+
+#center-column {
+    padding: 20px;
+}
+
+.col-sm-4 {
+    margin: 20px auto;
+    align-items: center;
+    padding: 32px 0 32px 16px;
+    border: solid #e59400 1px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.25);
+}
+
+#user {
+    display: flex;
+    flex-direction: column;
+    margin: 0 12px 12px;
+    width: 100%;
+    background-color: #eee;
+}
+
+.col-xs-2 {
+    margin: 20px auto;
+    border: solid 1px;
+    background-color: #fff;
+    padding: 32px 18px;
+    border: solid #e59400 1px;
+    border-radius: 12px;
+    box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.25);
+}
+
+#task-name {
+  width: 100%;
+  padding: 0 5px;
+}
+
+.form-check-label {
+  font-size: 25px;
+  margin: 0 15px;
+}
+
+#formCheck-1 {
+  margin: 15px 0;
+}
+
+#add-to-myday {
+  margin: 32px 0;
+}
+
+#tasks {
+  padding: 32px 8px;
+  border: solid 1px;
+}
+
+#my-day {
+  margin: 0 12px 12px;
+  width: 100%;
+  background-color: #eee;
+}
+
+#important {
+  margin: 0 12px 12px;
+  width: 100%;
+  background-color: #eee;
+}
+
+#planned {
+  margin: 0 12px 12px;
+  width: 100%;
+  background-color: #eee;
+}
+
+#my-day-btn {
+  margin: 0 0 0 12px;
+}
+
+#important-btn {
+  margin: 0 0 0 12px;
+}
+
+#planned-btn {
+  margin: 0 0 0 12px;
+}
+
+#my-day-label {
+  font-size: large;
+  margin: 4px 12px;
+}
+
+#important-label {
+  margin: 4px 12px;
+}
+
+#planned-label {
+  margin: 4px 12px;
+}
+
+link {
+}
+

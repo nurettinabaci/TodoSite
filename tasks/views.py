@@ -22,9 +22,10 @@ def mainPage(request):
 
     return render(request, 'tasks/todoList.html', context)
 
+
+@authenticated_user
 def updateTask(request, pk):
     task = Task.objects.get(id=pk)
-
     form = TaskForm(instance=task)
 
     if request.method=='POST':
@@ -37,6 +38,8 @@ def updateTask(request, pk):
     
     return render(request, 'tasks/update_task.html', context)
 
+
+@authenticated_user
 def deleteTask(request,pk):
     task = Task.objects.get(id=pk)
     
@@ -66,7 +69,7 @@ def loginPage(request):
 
 def logoutUser(request):
 	logout(request)
-	return redirect("")
+	return redirect('login')
 
 @unauthenticated_user
 def register(request):

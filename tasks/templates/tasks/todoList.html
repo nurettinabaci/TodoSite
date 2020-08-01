@@ -1,74 +1,84 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% load static %}
 
-<style>
-    body {
-        background-color: #638CB8;
-    }
+<html>
 
-    input {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        box-sizing: border-box;
-    }
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Todo-App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
 
-    input::placeholder {
-        color: #d3d3d3;
-    }
+<body>
+    <div class="container" role="main">
+        <div class="row">
 
-    .submit {
-        background-color: #6BA3E8;
-    }
+            <div class="col-xs-2">
+                <div class="d-md-flex" id="user">
+                    <span class="hello-msg">Hello {{request.user}}</span>
+                    <span class="hello-msg"><a href="{% url 'logout' %}">Logout</a></span>
 
-    .center-column {
-        width: 600px;
-        margin: 20px auto;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 3px;
-        box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
-    }
+                </div>
+                <div id="my-day" type="button">
+                    <img src="{% static 'images/day.png' %}" width="32" height="32">
+                    <label type="button" id="my-day-label">My Day</label>
+                </div>
 
-    .item-row {
-        background-color: #906abd;
-        margin: 10px;
-        padding: 10px;
-        border-radius: 3px;
-        color: #fff;
-        font-size: 16px;
-        box-shadow: 0px -1px 10px -4px rgba(0, 0, 0, 0.75);
-    }
+                <div id="important" type="button">
+                    <img src="{% static 'images/star.png' %}" width="32" height="32">
+                    <label type="button" id="important-label">Important</label>
+                </div>
 
-    .btn-danger {
-        background-color: indianred;
-        border-color: #e59400;
-    }
-</style>
+                <div id="planned" type="button">
+                    <img src="{%  static 'images/event-plan.png' %}" width="32" height="32">
+                    <label type="button" id="planned-label">Planned</label>
+                </div>
 
-<div class="center-column">
+            </div>
 
-    <form method="POST" action="/">
-        {% csrf_token %}
-        {{form.title}}
-        <input class="btn btn-info" type="submit" name="Create Task">
-    </form>
+            <div class="col-sm-4" id="center-column">
+                <form method="POST" action="/">
+                    {% csrf_token %}
+                    {{form.title}}
+                    <input class="btn btn-info" type="submit" name="Create Task">
+                </form>
 
-    <div class="todo-list">
+                <div class="todo-list">
 
-        {% for task in tasks %}
+                    {% for task in tasks %}
 
-        <div class="item-row">
-            <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
-            <a class="btn btn-sm btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
-            {% if task.isCompleted == True %}
-            <strike>{{task}}</strike>
-            {% else %}
-            <span>{{task}}</span>
-            {% endif %}
+                    <div class="item-row">
+                        <a class="btn btn-sm btn-info" href="{% url 'update_task' task.id %}">Update</a>
+                        <a class="btn btn-sm btn-danger" href="{% url 'delete_task' task.id %}">Delete</a>
+                        {% if task.isCompleted == True %}
+                        <strike>{{task}}</strike>
+                        {% else %}
+                        <span>{{task}}</span>
+                        {% endif %}
 
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="formCheck-1">
+                    <label class="form-check-label" id="task-name" for="formCheck-1">Task name</label>
+                </div>
+                <button class="btn btn-light border rounded d-flex d-md-flex flex-column justify-content-md-start align-items-md-center btn-sm"
+                        id="add-to-myday" type="button">Add to My Day</button>
+                <label for="due-date"> Add due date </label>
+                <input class="border rounded border-secondary shadow form-control-sm d-flex due-date"
+                       id="due-date" type="date" placeholder="Add due date" onfocus="(this.type=&#39;date&#39;)"
+                       title="asd">
+            </div>
         </div>
-        {% endfor %}
-
     </div>
-</div>
+
+
+</body>
+
+</html>
