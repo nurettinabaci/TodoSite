@@ -10,7 +10,7 @@ from .decorators import unauthenticated_user, authenticated_user
 
 @authenticated_user
 def mainPage(request):
-    tasks = Task.objects.all()
+    tasks = Task.objects.filter(user=request.user.enduser)
     form = TaskForm()
     if request.method == 'POST':
         form = TaskForm(request.POST)
